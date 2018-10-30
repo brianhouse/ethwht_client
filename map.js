@@ -12,10 +12,10 @@ let map = new mapboxgl.Map({
     attributionControl: false
 })
 
-let navigation = new mapboxgl.NavigationControl({
-    showCompass: false
-})
-map.addControl(navigation, 'top-left')
+// let navigation = new mapboxgl.NavigationControl({
+//     showCompass: false
+// })
+// map.addControl(navigation, 'top-left')
 
 
 let geolocate = new mapboxgl.GeolocateControl({

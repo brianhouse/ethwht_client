@@ -1,0 +1,21 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;    
+}                
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;    
+    background-color: #50C3DF;
+    /*opacity: 0.8;*/
+}

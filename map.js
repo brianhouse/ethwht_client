@@ -33,7 +33,6 @@ let geolocate = new mapboxgl.GeolocateControl({
 })
 map.addControl(geolocate, 'top-left')
 
-let p = 0
 let point_1 = null
 let point_2 = null
 
@@ -46,18 +45,21 @@ el2.className = 'marker'
 let marker_2 = new mapboxgl.Marker(el2)
 
 
+geolocate.on('geolocate', function(event) {
+    point_1 = [event.coords.longitude, event.coords.latitude]
+    marker_1.setLngLat(point_1)
+    marker_1.addTo(map)    
+    if (point_1 != null && point_2 != null) {
+        updateGeoJSON([point_1, point_2])
+    }        
+})
+
+
 // for testing purposes, also update the variable whenever you click on the map
 map.on('click', function(event) {
-    if (p % 2 == 0) {
-        point_1 = [event.lngLat.lng, event.lngLat.lat]
-        marker_1.setLngLat(point_1)
-        marker_1.addTo(map)        
-    } else {
-        point_2 = [event.lngLat.lng, event.lngLat.lat]
-        marker_2.setLngLat(point_2) 
-        marker_2.addTo(map)
-    }
-    p += 1
+    point_2 = [event.lngLat.lng, event.lngLat.lat]
+    marker_2.setLngLat(point_2) 
+    marker_2.addTo(map)
     if (point_1 != null && point_2 != null) {
         updateGeoJSON([point_1, point_2])
     }

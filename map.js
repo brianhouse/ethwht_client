@@ -8,7 +8,8 @@ let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/brianhouse/cjnvuuqiy3fei2rnrhg0bbjpw',
     center: [-73.96216,40.80779],
-    zoom: 16
+    zoom: 16,
+    attributionControl: false
 })
 
 let navigation = new mapboxgl.NavigationControl({
@@ -16,11 +17,6 @@ let navigation = new mapboxgl.NavigationControl({
 })
 map.addControl(navigation, 'top-left')
 
-let scale = new mapboxgl.ScaleControl({
-    maxWidth: 80,
-    unit: 'imperial'
-})
-map.addControl(scale, 'bottom-right')
 
 let geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
